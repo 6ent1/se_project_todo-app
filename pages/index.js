@@ -34,22 +34,22 @@ addTodoCloseBtn.addEventListener("click", () => {
   closeModal(addTodoPopup);
 });
 
-// addTodoForm.addEventListener("submit", (evt) => {
-//   evt.preventDefault();
-//   const name = evt.target.name.value;
-//   const dateInput = evt.target.date.value;
+addTodoForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
 
-//   // Create a date object and adjust for timezone
-//   const date = new Date(dateInput);
-//   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+  const name = evt.target.name.value;
+  const dateInput = evt.target.date.value;
 
-//   const id = uuidv4();
-//   const values = { name, date, id };
-//   const todo = generateTodo(values);
-//   todosList.append(todo);
-//   closeModal(addTodoPopup);
-//   resetValidation();
-// });
+  // Create a date object and adjust for timezone
+  const date = new Date(dateInput);
+  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+  const id = uuidv4();
+  const values = { name, date, id };
+  const todo = generateTodo(values);
+  todosList.append(todo);
+  closeModal(addTodoPopup);
+});
 
 initialTodos.forEach((item) => {
   const todo = generateTodo(item);
