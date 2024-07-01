@@ -5,9 +5,9 @@ import { initialTodos, validationConfig } from "../utils/constants.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
-const addTodoForm = addTodoPopup.querySelector(".popup__form");
+const addTodoForm = document.forms["add-todo-form"];
+//const addTodoForm = addTodoPopup.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
-//const todoTemplate = document.querySelector("#todo-template");
 const todosList = document.querySelector(".todos__list");
 
 const openModal = (modal) => {
@@ -36,6 +36,7 @@ addTodoCloseBtn.addEventListener("click", () => {
 
 addTodoForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
+  const submitBtn = document.querySelector(".popup__button");
 
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
@@ -45,10 +46,14 @@ addTodoForm.addEventListener("submit", (evt) => {
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
   const id = uuidv4();
+
   const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
   closeModal(addTodoPopup);
+  evt.target.reset();
+  submitBtn.disabled = true;
+  submitBtn.classList.add(validationConfig.inactiveButtonClass);
 });
 
 initialTodos.forEach((item) => {
