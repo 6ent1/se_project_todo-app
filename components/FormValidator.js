@@ -93,6 +93,11 @@ class FormValidator {
   resetForm() {
     this._formEl.reset();
   }
+
+  resetValidation() {
+    this.resetForm();
+    this.disableSubmit();
+  }
 }
 
 export default FormValidator;
