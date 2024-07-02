@@ -51,9 +51,8 @@ addTodoForm.addEventListener("submit", (evt) => {
   const todo = generateTodo(values);
   todosList.append(todo);
   closeModal(addTodoPopup);
-  evt.target.reset();
-  submitBtn.disabled = true;
-  submitBtn.classList.add(validationConfig.inactiveButtonClass);
+  newTodoValidator.resetForm();
+  newTodoValidator.disableSubmit();
 });
 
 initialTodos.forEach((item) => {

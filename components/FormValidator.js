@@ -59,6 +59,8 @@ class FormValidator {
       this._submitButtonSelector
     );
 
+    this.disableSubmit();
+
     this._toggleButtonState(this._buttonElement);
 
     this._inputList.forEach((inputElement) => {
@@ -89,7 +91,7 @@ class FormValidator {
   }
 
   resetForm() {
-    this._formElement.reset();
+    this._formEl.reset();
   }
 }
 
