@@ -1,12 +1,7 @@
-class Todo {
+export default class Todo {
   constructor(data, selector) {
     this._data = data;
     this._templateElement = document.querySelector(selector);
-  }
-
-  init() {
-    this.element = document.getElementById(".todos__list");
-    this._setEventListeners();
   }
 
   _generateDateEl() {
@@ -59,5 +54,3 @@ class Todo {
     return this._todoElement;
   }
 }
-
-export default Todo;
