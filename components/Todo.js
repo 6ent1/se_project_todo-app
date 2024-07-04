@@ -4,6 +4,11 @@ class Todo {
     this._templateElement = document.querySelector(selector);
   }
 
+  init() {
+    this.element = document.getElementById(".todos__list");
+    this._setEventListeners();
+  }
+
   _generateDateEl() {
     this._todoDate = this._todoElement.querySelector(".todo__date");
     this._dueDate = new Date(this._data.date);

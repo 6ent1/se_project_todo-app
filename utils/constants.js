@@ -8,7 +8,7 @@ const initialTodos = [
   {
     id: "a7bfd5ef-37cc-4fa6-89f2-cac098a8aeba",
     name: "Read project instructions",
-    completed: false,
+    completed: true,
     date: new Date(),
   },
   {
