@@ -36,10 +36,24 @@ addTodoPopup.setEventListeners();
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
+  const todo = new Todo(
+    data,
+    "#todo-template",
+    handleUpdateTodo,
+    handleDeleteTodo
+  );
   const todoElement = todo.getView();
   return todoElement;
 };
+
+function handleUpdateTodo(checked) {
+  counter.updateCompleted(checked);
+}
+
+function handleDeleteTodo(checked) {
+  counter.updateCompleted(!checked);
+  counter.updateTotal(!checked);
+}
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();

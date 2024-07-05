@@ -1,7 +1,9 @@
 export default class Todo {
-  constructor(data, selector) {
+  constructor(data, selector, handleUpdateTodo, handleDeleteTodo) {
     this._data = data;
     this._templateElement = document.querySelector(selector);
+    this._handleUpdateTodo = handleUpdateTodo;
+    this._handleDeleteTodo = handleDeleteTodo;
   }
 
   _generateDateEl() {
@@ -21,10 +23,19 @@ export default class Todo {
 
   _setEventListeners() {
     this._todoCheckboxEl.addEventListener("change", () => {
+      if (this._todoCheckboxEl.checked) {
+        this._handleUpdateTodo(true);
+      } else {
+        this._handleUpdateTodo(false);
+      }
       this._data.completed = !this._data.completed;
     });
 
     this._todoDeleteBtn.addEventListener("click", () => {
+      if (!this._todoCheckboxEl.checked) {
+        this._handleUpdateTodo(true);
+      }
+      this._handleDeleteTodo(true);
       this._todoElement.remove();
     });
   }
